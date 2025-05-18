@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 
-=======
->>>>>>> 573bb45a (Initial project push)
-"use client";
 
 import * as React from "react";
 import { AppLayout } from "@/components/layout/app-layout";
