@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
-<<<<<<< HEAD
+
 import { useState, useEffect, useCallback } from "react";
 import type { Lead } from "@/types/lead";
 import { useToast } from "@/hooks/use-toast";
@@ -51,7 +51,7 @@ async function assignLeadsApi(leadIds: (number | string)[], employeeId: string):
    return { success: true };
 }
 
->>>>>>> 573bb45a (Initial project push)
+
 
 export default function AssignLeadsPage() {
   const [unassignedLeads, setUnassignedLeads] = useState<Lead[]>([]);
@@ -61,10 +61,10 @@ export default function AssignLeadsPage() {
   const [isLoading, setIsLoading] = useState(true);
   const { toast } = useToast();
 
-<<<<<<< HEAD
-=======
+
+
   // Memoize loadData to prevent re-creation on every render
->>>>>>> 573bb45a (Initial project push)
+
   const loadData = useCallback(async () => {
     setIsLoading(true);
     try {
@@ -80,7 +80,7 @@ export default function AssignLeadsPage() {
     } finally {
       setIsLoading(false);
     }
-<<<<<<< HEAD
+
   }, [toast]); // fetchUnassignedLeads and fetchEmployees are stable
 
   useEffect(() => {
@@ -94,7 +94,7 @@ export default function AssignLeadsPage() {
   }, []);
 
    const handleSelectAll = useCallback((checked: boolean | string) => {
-=======
+
   }, [toast]); // Add toast as dependency
 
   useEffect(() => {
@@ -108,35 +108,35 @@ export default function AssignLeadsPage() {
   };
 
    const handleSelectAll = (checked: boolean | string) => {
->>>>>>> 573bb45a (Initial project push)
+
      if (checked) {
        setSelectedLeads(unassignedLeads.map(lead => lead.id));
      } else {
        setSelectedLeads([]);
      }
-<<<<<<< HEAD
+
    }, [unassignedLeads]);
 
    const handleAssign = useCallback(async () => {
-=======
+
    };
 
    const handleAssign = async () => {
->>>>>>> 573bb45a (Initial project push)
+
      if (selectedLeads.length === 0 || !selectedEmployee) {
        toast({ variant: "destructive", title: "Assignment Error", description: "Please select at least one lead and an employee." });
        return;
      }
       setIsLoading(true);
      try {
-<<<<<<< HEAD
+
        const result = await assignMockLeads(selectedLeads, selectedEmployee);
        if (result.success) {
          toast({ title: "Assignment Successful", description: `${selectedLeads.length} leads assigned to ${selectedEmployee}.` });
          await loadData(); // Re-fetch data
          setSelectedLeads([]);
          setSelectedEmployee('');
-=======
+
        const result = await assignLeadsApi(selectedLeads, selectedEmployee);
        if (result.success) {
          toast({ title: "Assignment Successful", description: `${selectedLeads.length} leads assigned to ${selectedEmployee}.` });
@@ -144,7 +144,7 @@ export default function AssignLeadsPage() {
          await loadData(); // Reload data
          setSelectedLeads([]); // Clear selection
          setSelectedEmployee(''); // Clear employee selection
->>>>>>> 573bb45a (Initial project push)
+
        } else {
           toast({ variant: "destructive", title: "Assignment Failed", description: "Could not assign leads. Please try again." });
        }
@@ -154,11 +154,10 @@ export default function AssignLeadsPage() {
      } finally {
        setIsLoading(false);
      }
-<<<<<<< HEAD
+
    }, [selectedLeads, selectedEmployee, toast, loadData]); // Added loadData as dependency
-=======
    };
->>>>>>> 573bb45a (Initial project push)
+
 
 
   return (
@@ -228,7 +227,7 @@ export default function AssignLeadsPage() {
     </AppLayout>
   );
 }
-<<<<<<< HEAD
-=======
 
->>>>>>> 573bb45a (Initial project push)
+ 
+
+
