@@ -7,10 +7,10 @@ import { LeadDataTable } from "@/components/leads/lead-data-table";
 import type { Lead } from "@/types/lead";
 import { LeadEditDialog } from "@/components/leads/lead-edit-dialog";
 import { useToast } from "@/hooks/use-toast";
-<<<<<<< HEAD
+
 import { fetchEmployeeLeads, updateMockLead } from "@/lib/mock-data";
 import { Skeleton } from "@/components/ui/skeleton";
-=======
+
 import { generateMockLeads } from "@/lib/mock-data"; // Import the mock data generator
 import { Skeleton } from "@/components/ui/skeleton"; // Import Skeleton
 
@@ -50,23 +50,23 @@ async function updateLeadApiEmployee(updatedData: Partial<Lead>): Promise<{ succ
   }
 }
 
->>>>>>> 573bb45a (Initial project push)
+
 
 export default function EmployeeDashboard() {
   const [leads, setLeads] = React.useState<Lead[]>([]);
   const [isLoading, setIsLoading] = React.useState(true);
   const [editingLead, setEditingLead] = React.useState<Lead | null>(null);
   const [isEditDialogOpen, setIsEditDialogOpen] = React.useState(false);
-<<<<<<< HEAD
+
   const [employeeId, setEmployeeId] = React.useState<string | null>(null);
-=======
+
   const [employeeId, setEmployeeId] = React.useState<string | null>(null); // State to store employee ID
->>>>>>> 573bb45a (Initial project push)
+
   const { toast } = useToast();
 
   const userRole = "employee";
 
-<<<<<<< HEAD
+
   React.useEffect(() => {
     if (typeof window !== 'undefined') {
       const storedUserId = localStorage.getItem('userId');
@@ -77,7 +77,7 @@ export default function EmployeeDashboard() {
         toast({ variant: "destructive", title: "Authentication Error", description: "Could not identify user. Please login again." });
         setIsLoading(false); 
       }
-=======
+
   // Effect to get employee ID from localStorage on mount
   React.useEffect(() => {
     const storedUserId = localStorage.getItem('userId');
@@ -89,21 +89,21 @@ export default function EmployeeDashboard() {
       toast({ variant: "destructive", title: "Authentication Error", description: "Could not identify user. Please login again." });
       // Consider redirecting: router.push('/login');
        setIsLoading(false); // Stop loading if no ID
->>>>>>> 573bb45a (Initial project push)
+
     }
   }, [toast]);
 
 
-<<<<<<< HEAD
+
   const loadLeads = React.useCallback(async () => {
     if (!employeeId) {
       setIsLoading(false); 
       return;
     }
-=======
+
   const loadLeads = React.useCallback(async () => { // Memoize loadLeads
     if (!employeeId) return; // Don't load if no employeeId
->>>>>>> 573bb45a (Initial project push)
+
 
     setIsLoading(true);
       try {
@@ -115,14 +115,14 @@ export default function EmployeeDashboard() {
       } finally {
         setIsLoading(false);
       }
-<<<<<<< HEAD
+
   }, [employeeId, toast]); // fetchEmployeeLeads is stable
 
-=======
+
   }, [employeeId, toast]); // Dependencies
 
   // Fetch leads when employeeId is set
->>>>>>> 573bb45a (Initial project push)
+
   React.useEffect(() => {
     if (employeeId) {
       loadLeads();
@@ -130,7 +130,7 @@ export default function EmployeeDashboard() {
   }, [employeeId, loadLeads]);
 
 
-<<<<<<< HEAD
+
   const handleEditDialog = React.useCallback((lead: Lead) => {
     setEditingLead(lead);
     setIsEditDialogOpen(true);
@@ -162,7 +162,7 @@ export default function EmployeeDashboard() {
        </div>
 
       {isLoading ? (
-=======
+
   // Handler to open the edit dialog
   const handleEditDialog = (lead: Lead) => {
     setEditingLead(lead);
@@ -198,7 +198,7 @@ export default function EmployeeDashboard() {
 
       {isLoading ? (
           // Skeleton Loader for Table (similar to admin)
->>>>>>> 573bb45a (Initial project push)
+
           <div className="space-y-4">
                <div className="flex justify-between">
                   <Skeleton className="h-9 w-1/3" />
@@ -208,13 +208,13 @@ export default function EmployeeDashboard() {
                   </div>
               </div>
               <div className="rounded-md border shadow-sm bg-card">
-<<<<<<< HEAD
+
                   <Skeleton className="h-12 w-full rounded-t-md" />
                   <div className="space-y-2 p-4">
-=======
+
                   <Skeleton className="h-12 w-full rounded-t-md" /> {/* Header */}
                   <div className="space-y-2 p-4"> {/* Rows */}
->>>>>>> 573bb45a (Initial project push)
+
                       <Skeleton className="h-10 w-full" />
                       <Skeleton className="h-10 w-full" />
                       <Skeleton className="h-10 w-full" />
@@ -230,7 +230,7 @@ export default function EmployeeDashboard() {
                </div>
           </div>
       ) : !employeeId ? (
-<<<<<<< HEAD
+
         <p className="text-destructive text-center mt-10">Could not load leads. User ID not found or not yet loaded.</p>
       ): (
         <LeadDataTable
@@ -242,7 +242,7 @@ export default function EmployeeDashboard() {
         />
       )}
 
-=======
+
         <p className="text-destructive text-center mt-10">Could not load leads. User ID not found.</p> // Centered message
       ): (
         <LeadDataTable
@@ -258,7 +258,7 @@ export default function EmployeeDashboard() {
       )}
 
        {/* Edit Dialog */}
->>>>>>> 573bb45a (Initial project push)
+
        {editingLead && (
           <LeadEditDialog
             lead={editingLead}
@@ -268,11 +268,11 @@ export default function EmployeeDashboard() {
             onSave={async (data) => {
                 const result = await handleSave(data);
                  if (!result.success) {
-<<<<<<< HEAD
+
                      throw new Error("API update failed"); 
-=======
+
                      throw new Error("API update failed"); // Propagate error to keep dialog open
->>>>>>> 573bb45a (Initial project push)
+
                  }
             }}
           />
@@ -280,7 +280,4 @@ export default function EmployeeDashboard() {
     </AppLayout>
   );
 }
-<<<<<<< HEAD
-=======
-    
->>>>>>> 573bb45a (Initial project push)
+)

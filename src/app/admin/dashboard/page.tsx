@@ -274,10 +274,15 @@ export default function AdminDashboard() {
 
                   <Skeleton className="h-12 w-full rounded-t-md" />
                   <div className="space-y-2 p-4">
+<<<<<<< HEAD
 
                   <Skeleton className="h-12 w-full rounded-t-md" /> {/* Header */}
                   <div className="space-y-2 p-4"> {/* Rows */}
 
+=======
+                  <Skeleton className="h-12 w-full rounded-t-md" /> {/* Header */}
+                  <div className="space-y-2 p-4"> {/* Rows */}
+>>>>>>> 6b1a0c8 (Your commit message)
                       <Skeleton className="h-10 w-full" />
                       <Skeleton className="h-10 w-full" />
                       <Skeleton className="h-10 w-full" />
@@ -353,4 +358,7 @@ export default function AdminDashboard() {
   );
 }
     
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6b1a0c8 (Your commit message)

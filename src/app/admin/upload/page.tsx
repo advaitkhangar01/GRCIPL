@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 
-=======
->>>>>>> 573bb45a (Initial project push)
 "use client";
 
 import { AppLayout } from "@/components/layout/app-layout";
@@ -10,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Upload } from "lucide-react";
-<<<<<<< HEAD
+
 import { useState, useCallback } from "react";
 import { useToast } from "@/hooks/use-toast";
 import * as XLSX from 'xlsx';
@@ -94,7 +91,7 @@ async function processAndStoreLeads(file: File): Promise<{ success: boolean; mes
     };
     reader.readAsArrayBuffer(file);
   });
-=======
+
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 
@@ -121,7 +118,7 @@ async function uploadLeadsApi(file: File): Promise<{ success: boolean; message: 
   // 4. Return success/error response
 
   return { success: true, message: `File "${file.name}" uploaded successfully. Leads are being processed.` };
->>>>>>> 573bb45a (Initial project push)
+
 }
 
 export default function UploadLeadsPage() {
@@ -129,25 +126,25 @@ export default function UploadLeadsPage() {
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
 
-<<<<<<< HEAD
+
    const handleFileChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
-=======
+
    const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
->>>>>>> 573bb45a (Initial project push)
+
      if (event.target.files && event.target.files.length > 0) {
        setSelectedFile(event.target.files[0]);
      } else {
        setSelectedFile(null);
      }
-<<<<<<< HEAD
+
    }, []);
 
    const handleUpload = useCallback(async () => {
-=======
+
    };
 
    const handleUpload = async () => {
->>>>>>> 573bb45a (Initial project push)
+
      if (!selectedFile) {
        toast({ variant: "destructive", title: "No File Selected", description: "Please choose an Excel file to upload." });
        return;
@@ -155,7 +152,7 @@ export default function UploadLeadsPage() {
 
      setIsLoading(true);
      try {
-<<<<<<< HEAD
+
         const result = await processAndStoreLeads(selectedFile);
        if (result.success) {
          toast({ 
@@ -164,13 +161,13 @@ export default function UploadLeadsPage() {
            duration: 7000, 
           });
          setSelectedFile(null); 
-=======
+
         const result = await uploadLeadsApi(selectedFile);
        if (result.success) {
          toast({ title: "Upload Started", description: result.message });
          setSelectedFile(null); // Clear selection after successful start
          // Optionally clear the input field value if needed
->>>>>>> 573bb45a (Initial project push)
+
          const fileInput = document.getElementById('lead-file-upload') as HTMLInputElement;
          if (fileInput) fileInput.value = '';
        } else {
@@ -182,27 +179,27 @@ export default function UploadLeadsPage() {
      } finally {
        setIsLoading(false);
      }
-<<<<<<< HEAD
+
    }, [selectedFile, toast]); // processAndStoreLeads is stable
-=======
+
    };
->>>>>>> 573bb45a (Initial project push)
+
 
   return (
     <AppLayout userRole="admin">
        <h1 className="text-2xl font-semibold text-primary mb-6">Upload Leads</h1>
         <Card>
          <CardHeader>
-<<<<<<< HEAD
+
            <CardTitle>Upload Excel File (.xlsx, .xls, .csv)</CardTitle>
            <CardDescription>
              Select an Excel file containing lead data. Common columns like 'Client Name', 'Mobile Number', 'Source', etc., will be mapped.
-=======
+
            <CardTitle>Upload Excel File (.xlsx)</CardTitle>
            <CardDescription>
              Select an Excel file containing lead data. Ensure the columns match the required format.
              (Required columns: Name, Phone. Optional: Company, Email, Location, Source, etc.)
->>>>>>> 573bb45a (Initial project push)
+
             </CardDescription>
          </CardHeader>
          <CardContent className="space-y-4">
@@ -211,11 +208,11 @@ export default function UploadLeadsPage() {
              <Input
                 id="lead-file-upload"
                 type="file"
-<<<<<<< HEAD
+
                 accept=".xlsx, .xls, .csv" 
-=======
+
                 accept=".xlsx" // Accept only .xlsx files
->>>>>>> 573bb45a (Initial project push)
+
                 onChange={handleFileChange}
                 disabled={isLoading}
              />
@@ -229,12 +226,12 @@ export default function UploadLeadsPage() {
 
             <Button onClick={handleUpload} disabled={isLoading || !selectedFile}>
               <Upload className="mr-2 h-4 w-4" />
-<<<<<<< HEAD
+
               {isLoading ? "Processing..." : "Upload and Process File"}
             </Button>
          </CardContent>
        </Card>
-=======
+
               {isLoading ? "Uploading..." : "Upload File"}
             </Button>
          </CardContent>
@@ -250,7 +247,7 @@ export default function UploadLeadsPage() {
            <p className="text-muted-foreground">Data mapping UI would go here.</p>
          </CardContent>
        </Card> */}
->>>>>>> 573bb45a (Initial project push)
+
     </AppLayout>
   );
 }

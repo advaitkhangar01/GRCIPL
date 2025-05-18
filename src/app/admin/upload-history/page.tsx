@@ -6,7 +6,7 @@ import { AppLayout } from "@/components/layout/app-layout";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
-<<<<<<< HEAD
+
 import { format, parseISO, isValid } from 'date-fns';
 import type { UploadHistoryEntry } from "@/types/upload-history";
 import { useToast } from "@/hooks/use-toast";
@@ -17,7 +17,7 @@ async function fetchUploadHistory(): Promise<UploadHistoryEntry[]> {
   console.log("Fetching upload history (mock)...");
   await new Promise(resolve => setTimeout(resolve, 100));
   return [];
-=======
+
 import { format, parseISO, isValid } from 'date-fns'; // Import isValid
 import type { UploadHistoryEntry } from "@/types/upload-history";
 import { useToast } from "@/hooks/use-toast";
@@ -37,7 +37,7 @@ async function fetchUploadHistory(): Promise<UploadHistoryEntry[]> {
     { id: 5, fileName: "another_batch.xlsx", uploadTimestamp: "2024-07-20T15:00:00Z", uploadedBy: "Admin User 3", leadCount: 100, status: "Completed" },
     // Add more mock entries
   ].map(entry => ({...entry, id: String(entry.id)})); // Ensure IDs are strings if needed
->>>>>>> 573bb45a (Initial project push)
+
 }
 
 // Helper to format date strings
@@ -48,11 +48,11 @@ const formatTimestamp = (timestamp: string | null | undefined): string => {
     if (!isValid(date)) {
       throw new Error("Invalid date string passed to parseISO");
     }
-<<<<<<< HEAD
+
     return format(date, 'PPpp');
-=======
+
     return format(date, 'PPpp'); // Format like 'Sep 15, 2024, 11:05:00 AM'
->>>>>>> 573bb45a (Initial project push)
+
   } catch (e) {
     console.warn("Invalid Timestamp for formatting:", timestamp, e);
     return "Invalid Date";
@@ -63,19 +63,19 @@ const formatTimestamp = (timestamp: string | null | undefined): string => {
 const getStatusVariant = (status: UploadHistoryEntry['status']): "default" | "secondary" | "destructive" | "outline" => {
   switch (status) {
     case 'Completed':
-<<<<<<< HEAD
+
       return 'default';
     case 'Processing':
       return 'outline';
     case 'Failed':
       return 'destructive';
-=======
+
       return 'default'; // Use primary color for success
     case 'Processing':
       return 'outline'; // Use outline for in-progress
     case 'Failed':
       return 'destructive'; // Use destructive for failure
->>>>>>> 573bb45a (Initial project push)
+
     default:
       return 'secondary';
   }
@@ -86,7 +86,7 @@ export default function UploadHistoryPage() {
   const [isLoading, setIsLoading] = React.useState(true);
   const { toast } = useToast();
 
-<<<<<<< HEAD
+
   const loadHistory = React.useCallback(async () => {
     setIsLoading(true);
     try {
@@ -129,7 +129,7 @@ export default function UploadHistoryPage() {
       ))}
     </div>
   );
-=======
+
   React.useEffect(() => {
     const loadHistory = async () => {
       setIsLoading(true);
@@ -157,7 +157,7 @@ export default function UploadHistoryPage() {
     };
     loadHistory();
   }, [toast]);
->>>>>>> 573bb45a (Initial project push)
+
 
   return (
     <AppLayout userRole="admin">
@@ -165,7 +165,7 @@ export default function UploadHistoryPage() {
       <Card>
         <CardHeader>
           <CardTitle>Past Lead Uploads</CardTitle>
-<<<<<<< HEAD
+
           <CardDescription>Log of all lead files uploaded to the system (session-based).</CardDescription>
         </CardHeader>
         <CardContent>
@@ -173,7 +173,7 @@ export default function UploadHistoryPage() {
             renderSkeleton()
           ) : history.length === 0 ? (
             <p className="text-muted-foreground text-center py-10">No upload history found for this session.</p>
-=======
+
           <CardDescription>Log of all lead files uploaded to the system.</CardDescription>
         </CardHeader>
         <CardContent>
@@ -181,7 +181,7 @@ export default function UploadHistoryPage() {
             <p>Loading history...</p> // Replace with skeleton loader
           ) : history.length === 0 ? (
             <p className="text-muted-foreground">No upload history found.</p>
->>>>>>> 573bb45a (Initial project push)
+
           ) : (
             <div className="overflow-x-auto">
               <Table>
@@ -197,10 +197,10 @@ export default function UploadHistoryPage() {
                 </TableHeader>
                 <TableBody>
                   {history.map((entry) => (
-<<<<<<< HEAD
-=======
+
+
                     // Add key prop here using entry.id
->>>>>>> 573bb45a (Initial project push)
+
                     <TableRow key={entry.id}>
                       <TableCell className="font-medium">{entry.fileName}</TableCell>
                       <TableCell>{formatTimestamp(entry.uploadTimestamp)}</TableCell>

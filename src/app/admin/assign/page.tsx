@@ -12,7 +12,7 @@ import { useState, useEffect, useCallback } from "react";
 import type { Lead } from "@/types/lead";
 import { useToast } from "@/hooks/use-toast";
 import { fetchUnassignedLeads, fetchEmployees, assignMockLeads } from "@/lib/mock-data";
-=======
+
 import { useState, useEffect, useCallback } from "react"; // Import useCallback
 import type { Lead } from "@/types/lead";
 import { useToast } from "@/hooks/use-toast";
@@ -62,7 +62,10 @@ export default function AssignLeadsPage() {
   const { toast } = useToast();
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6b1a0c8 (Your commit message)
   // Memoize loadData to prevent re-creation on every render
 
   const loadData = useCallback(async () => {
@@ -154,9 +157,15 @@ export default function AssignLeadsPage() {
      } finally {
        setIsLoading(false);
      }
+<<<<<<< HEAD
 
    }, [selectedLeads, selectedEmployee, toast, loadData]); // Added loadData as dependency
    };
+=======
+   }, [selectedLeads, selectedEmployee, toast, loadData]); // Added loadData as dependency
+   
+  };
+>>>>>>> 6b1a0c8 (Your commit message)
 
 
 
@@ -228,6 +237,9 @@ export default function AssignLeadsPage() {
   );
 }
 
+<<<<<<< HEAD
  
 
 
+=======
+>>>>>>> 6b1a0c8 (Your commit message)

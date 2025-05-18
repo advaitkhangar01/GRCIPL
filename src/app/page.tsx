@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 // This page should redirect to the login page
 
 import { redirect } from 'next/navigation';
@@ -9,7 +9,7 @@ export default function HomePage() {
   // To be absolutely safe and avoid " niets returnen" issues in some Next.js versions/setups,
   // you might return null or a minimal loading indicator, though redirect() should prevent rendering.
   // return null;
-=======
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import Link from "next/link";
@@ -37,5 +37,5 @@ export default function Home() {
       </Card>
     </main>
   );
->>>>>>> 573bb45a (Initial project push)
+
 }

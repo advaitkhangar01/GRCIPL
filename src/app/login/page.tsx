@@ -1,18 +1,18 @@
-<<<<<<< HEAD
+
 
 "use client";
 
 import { useState, useEffect } from 'react'; // Added useEffect
-=======
+
 "use client";
 
 import { useState } from 'react';
->>>>>>> 573bb45a (Initial project push)
+
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-<<<<<<< HEAD
+
 import { useRouter } from 'next/navigation';
 import { useToast } from "@/hooks/use-toast";
 // import Image from 'next/image'; // Image component is no longer needed
@@ -23,7 +23,7 @@ const offlineUsers = {
   "master_admin": { password: "master1008", role: 'admin', userId: 'master_admin' },
   "pooja": { password: "pooja@987", role: 'employee', userId: 'pooja' },
   "aditya": { password: "aditya@987", role: 'employee', userId: 'aditya' }
-=======
+
 import { useRouter } from 'next/navigation'; // Use next/navigation for App Router
 import { useToast } from "@/hooks/use-toast";
 import Image from 'next/image'; // Import next/image
@@ -45,14 +45,14 @@ const authenticateUser = async (email: string, password: string): Promise<{ succ
   } else {
     return { success: false, message: "Invalid credentials" };
   }
->>>>>>> 573bb45a (Initial project push)
+
 };
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-<<<<<<< HEAD
+
   const [currentYear, setCurrentYear] = useState<number | null>(null); // For current year
   const router = useRouter();
   const { toast } = useToast();
@@ -62,16 +62,16 @@ export default function LoginPage() {
     setCurrentYear(new Date().getFullYear());
   }, []);
 
-=======
+
   const router = useRouter();
   const { toast } = useToast();
 
->>>>>>> 573bb45a (Initial project push)
+
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
 
-<<<<<<< HEAD
+
     await new Promise(resolve => setTimeout(resolve, 300));
 
     const userId = email.trim();
@@ -104,7 +104,7 @@ export default function LoginPage() {
     }
 
     setIsLoading(false);
-=======
+
     try {
       const authResult = await authenticateUser(email, password);
 
@@ -144,13 +144,13 @@ export default function LoginPage() {
     } finally {
       setIsLoading(false);
     }
->>>>>>> 573bb45a (Initial project push)
+
   };
 
   return (
     <main className="flex min-h-screen items-stretch bg-gradient-to-br from-background via-muted/50 to-background">
       {/* Left Side - Login Form */}
-<<<<<<< HEAD
+
       <div className="flex w-full flex-col items-center justify-center p-4 sm:p-6 md:w-1/2 lg:w-2/5 xl:w-1/3">
         <Card className="w-full max-w-md shadow-xl border border-border/50 bg-card rounded-xl backdrop-blur-sm bg-opacity-90">
           <CardHeader className="text-center space-y-2 pt-6 pb-4 sm:pt-8">
@@ -167,7 +167,7 @@ export default function LoginPage() {
                 <Input
                   id="userIdInput"
                   type="text"
-=======
+
       <div className="flex w-full flex-col items-center justify-center p-4 sm:p-6 md:w-1/2 lg:w-2/5 xl:w-1/3"> {/* Adjusted padding */}
         <Card className="w-full max-w-md shadow-xl border border-border/50 bg-card rounded-xl backdrop-blur-sm bg-opacity-90">
           <CardHeader className="text-center space-y-2 pt-6 pb-4 sm:pt-8"> {/* Adjusted padding */}
@@ -185,23 +185,23 @@ export default function LoginPage() {
                 <Input
                   id="email"
                   type="text" // Change type to text for User ID
->>>>>>> 573bb45a (Initial project push)
+
                   placeholder="Enter your User ID"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
                   disabled={isLoading}
-<<<<<<< HEAD
+
                   className="h-10 sm:h-11 text-sm sm:text-base border-input bg-input/70 focus:border-primary focus:ring-primary/50 transition-all"
                 />
               </div>
               <div className="space-y-1.5 sm:space-y-2">
-=======
+
                   className="h-10 sm:h-11 text-sm sm:text-base border-input bg-input/70 focus:border-primary focus:ring-primary/50 transition-all" /* Adjusted height/text size */
                 />
               </div>
               <div className="space-y-1.5 sm:space-y-2"> {/* Adjusted spacing */}
->>>>>>> 573bb45a (Initial project push)
+
                 <Label htmlFor="password" className="text-sm font-medium text-foreground/80">Password</Label>
                 <Input
                   id="password"
@@ -211,25 +211,25 @@ export default function LoginPage() {
                   onChange={(e) => setPassword(e.target.value)}
                   required
                   disabled={isLoading}
-<<<<<<< HEAD
+
                   className="h-10 sm:h-11 text-sm sm:text-base border-input bg-input/70 focus:border-primary focus:ring-primary/50 transition-all"
                 />
               </div>
               <Button type="submit" className="w-full h-11 sm:h-12 text-base sm:text-lg font-semibold mt-2 transition-transform duration-150 ease-in-out hover:scale-[1.02] active:scale-[0.98]" disabled={isLoading}>
                  <LogIn className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
-=======
+
                   className="h-10 sm:h-11 text-sm sm:text-base border-input bg-input/70 focus:border-primary focus:ring-primary/50 transition-all" /* Adjusted height/text size */
                 />
               </div>
               <Button type="submit" className="w-full h-11 sm:h-12 text-base sm:text-lg font-semibold mt-2 transition-transform duration-150 ease-in-out hover:scale-[1.02] active:scale-[0.98]" disabled={isLoading}> {/* Adjusted height/text size */}
                  <LogIn className="mr-2 h-4 w-4 sm:h-5 sm:w-5" /> {/* Adjusted size */}
->>>>>>> 573bb45a (Initial project push)
+
                 {isLoading ? 'Logging in...' : 'Login'}
               </Button>
             </form>
           </CardContent>
         </Card>
-<<<<<<< HEAD
+
         {currentYear !== null && (
           <p className="mt-6 sm:mt-8 text-center text-xs text-muted-foreground">
             &copy; {currentYear} Gaea Realty and Consultants India pvt. ltd.
@@ -249,7 +249,7 @@ export default function LoginPage() {
            <p className="text-base lg:text-lg xl:text-xl text-primary-foreground/90 drop-shadow-md max-w-md lg:max-w-lg">
              Empowering Gaea Realty with Streamlined Lead Tracking and Sales Performance Insights.
            </p>
-=======
+
         <p className="mt-6 sm:mt-8 text-center text-xs text-muted-foreground"> {/* Adjusted margin */}
            &copy; {new Date().getFullYear()} Gaea Realty and Consultants India pvt. ltd.
         </p>
@@ -275,7 +275,7 @@ export default function LoginPage() {
                Empowering Gaea Realty with Streamlined Lead Tracking and Sales Performance Insights.
              </p>
           </div>
->>>>>>> 573bb45a (Initial project push)
+
         </div>
       </div>
     </main>

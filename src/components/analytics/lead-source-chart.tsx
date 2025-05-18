@@ -2,11 +2,11 @@
 "use client"
 
 import * as React from "react"
-<<<<<<< HEAD
+
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis, ResponsiveContainer, Tooltip, Cell } from "recharts"
-=======
+
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis, ResponsiveContainer, Tooltip } from "recharts"
->>>>>>> 573bb45a (Initial project push)
+
 
 import {
   ChartContainer,
@@ -34,11 +34,11 @@ interface LeadSourceChartProps {
   data: { source: string; count: number }[];
 }
 
-<<<<<<< HEAD
+
 const LeadSourceChartComponent = ({ data }: LeadSourceChartProps) => {
-=======
+
 export function LeadSourceChart({ data }: LeadSourceChartProps) {
->>>>>>> 573bb45a (Initial project push)
+
 
    if (!data || data.length === 0) {
      return <div className="h-[250px] w-full flex items-center justify-center text-muted-foreground">No data</div>;
@@ -86,10 +86,10 @@ export function LeadSourceChart({ data }: LeadSourceChartProps) {
     </div>
   )
 }
-<<<<<<< HEAD
+
 export const LeadSourceChart = React.memo(LeadSourceChartComponent);
-=======
+
 
 // You might need to explicitly import Cell if not automatically available
 import { Cell } from "recharts";
->>>>>>> 573bb45a (Initial project push)
+

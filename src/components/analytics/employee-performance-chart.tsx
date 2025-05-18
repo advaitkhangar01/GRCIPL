@@ -33,11 +33,11 @@ interface EmployeePerformanceChartProps {
   data: { employee: string; assigned: number; prospects: number; won: number }[];
 }
 
-<<<<<<< HEAD
+
 const EmployeePerformanceChartComponent = ({ data }: EmployeePerformanceChartProps) => {
-=======
+
 export function EmployeePerformanceChart({ data }: EmployeePerformanceChartProps) {
->>>>>>> 573bb45a (Initial project push)
+
 
   if (!data || data.length === 0) {
      return <div className="h-[300px] w-full flex items-center justify-center text-muted-foreground">No data</div>;
@@ -79,7 +79,5 @@ export function EmployeePerformanceChart({ data }: EmployeePerformanceChartProps
   )
 }
 
-<<<<<<< HEAD
+
 export const EmployeePerformanceChart = React.memo(EmployeePerformanceChartComponent);
-=======
->>>>>>> 573bb45a (Initial project push)

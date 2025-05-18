@@ -37,11 +37,11 @@ interface CallOutcomeChartProps {
 // Define a type that represents the valid keys of chartConfig
 type ValidChartOutcome = keyof typeof chartConfig;
 
-<<<<<<< HEAD
+
 const CallOutcomeChartComponent = ({ data }: CallOutcomeChartProps) => {
-=======
+
 export function CallOutcomeChart({ data }: CallOutcomeChartProps) {
->>>>>>> 573bb45a (Initial project push)
+
    const chartData = React.useMemo(() => {
      return data.map(item => {
        const outcomeKey = item.outcome as ValidChartOutcome;
@@ -133,8 +133,5 @@ export function CallOutcomeChart({ data }: CallOutcomeChartProps) {
      </ChartContainer>
   )
 }
-<<<<<<< HEAD
 
 export const CallOutcomeChart = React.memo(CallOutcomeChartComponent);
-=======
->>>>>>> 573bb45a (Initial project push)

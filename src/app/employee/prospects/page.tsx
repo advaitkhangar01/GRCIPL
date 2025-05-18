@@ -4,14 +4,11 @@
 import * as React from "react";
 import { AppLayout } from "@/components/layout/app-layout";
 import { LeadDataTable } from "@/components/leads/lead-data-table";
-<<<<<<< HEAD
 import type { Lead } from "@/types/lead";
 import { LeadEditDialog } from "@/components/leads/lead-edit-dialog";
 import { useToast } from "@/hooks/use-toast";
 import { fetchEmployeeProspectLeads, updateMockLead } from "@/lib/mock-data";
 import { Skeleton } from "@/components/ui/skeleton";
-
-=======
 // getColumns is managed within LeadDataTable
 // import { getColumns } from "@/components/leads/lead-table-columns";
 import type { Lead } from "@/types/lead";
@@ -19,11 +16,8 @@ import { LeadEditDialog } from "@/components/leads/lead-edit-dialog";
 import { useToast } from "@/hooks/use-toast";
 import { generateMockLeads } from "@/lib/mock-data"; // Import the mock data generator
 import { Skeleton } from "@/components/ui/skeleton";
-
 // Use the generated mock leads based on the Excel sheet
 const allLeads: Lead[] = generateMockLeads();
-
-
 // Mock function to fetch leads assigned to the employee that are prospects
 async function fetchEmployeeProspectLeads(employeeId: string): Promise<Lead[]> {
   console.log(`Fetching prospect leads for employee: ${employeeId}`);
@@ -59,14 +53,14 @@ async function updateLeadApi(updatedData: Partial<Lead>): Promise<{ success: boo
   }
 }
 
->>>>>>> 573bb45a (Initial project push)
+
 
 export default function EmployeeProspectsPage() {
   const [leads, setLeads] = React.useState<Lead[]>([]);
   const [isLoading, setIsLoading] = React.useState(true);
   const [editingLead, setEditingLead] = React.useState<Lead | null>(null);
   const [isEditDialogOpen, setIsEditDialogOpen] = React.useState(false);
-<<<<<<< HEAD
+
   const [employeeId, setEmployeeId] = React.useState<string | null>(null);
   const { toast } = useToast();
 
@@ -90,7 +84,7 @@ export default function EmployeeProspectsPage() {
       setIsLoading(false); 
       return;
     }
-=======
+
   const [employeeId, setEmployeeId] = React.useState<string | null>(null); // State to store employee ID
   const { toast } = useToast();
 
@@ -110,7 +104,7 @@ export default function EmployeeProspectsPage() {
 
   const loadData = React.useCallback(async () => { // Memoize loadData
     if (!employeeId) return; // Don't load if no employeeId yet
->>>>>>> 573bb45a (Initial project push)
+
       setIsLoading(true);
       try {
         const prospects = await fetchEmployeeProspectLeads(employeeId);
@@ -121,19 +115,19 @@ export default function EmployeeProspectsPage() {
       } finally {
         setIsLoading(false);
       }
-<<<<<<< HEAD
+
     }, [employeeId, toast]); // fetchEmployeeProspectLeads is stable
 
-=======
+
     }, [employeeId, toast]); // Dependency on toast and employeeId
 
   // Fetch leads on component mount or when employeeId changes
->>>>>>> 573bb45a (Initial project push)
+
   React.useEffect(() => {
     if (employeeId) {
       loadData();
     }
-<<<<<<< HEAD
+
   }, [employeeId, loadData]);
 
 
@@ -152,7 +146,7 @@ export default function EmployeeProspectsPage() {
     if (result.success && result.lead) {
         const shouldRemain = result.lead.callOutcome === "Prospect" || ["Hot", "Warm", "Cold", "Very Cold"].includes(result.lead.leadStatus || "");
         if (shouldRemain) {
-=======
+
   }, [employeeId, loadData]); // Use memoized loadData
 
 
@@ -173,12 +167,11 @@ export default function EmployeeProspectsPage() {
 
         if (shouldRemain) {
             // Update the lead in the current view
->>>>>>> 573bb45a (Initial project push)
             setLeads(prevLeads =>
               prevLeads.map(l => (l.id === result.lead!.id ? result.lead! : l))
             );
         } else {
-<<<<<<< HEAD
+
              setLeads(prevLeads => prevLeads.filter(l => l.id !== result.lead!.id));
              toast({ title: "Lead Updated", description: `Lead "${result.lead.name}" moved from Prospects.` });
         }
@@ -189,7 +182,7 @@ export default function EmployeeProspectsPage() {
        return { success: false };
     }
   }, [toast]);
-=======
+
              // Remove the lead from the current view as it's no longer a prospect
              setLeads(prevLeads => prevLeads.filter(l => l.id !== result.lead!.id));
              toast({ title: "Lead Updated", description: `Lead "${result.lead.name}" moved from Prospects.` });
@@ -200,17 +193,17 @@ export default function EmployeeProspectsPage() {
        return { success: false };
     }
   };
->>>>>>> 573bb45a (Initial project push)
+
 
 
   return (
     <AppLayout userRole={userRole}>
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-2xl font-semibold text-primary">My Prospects ({employeeId || 'Loading...'})</h1>
-<<<<<<< HEAD
-=======
+
+
          {/* No reassign button for employees */}
->>>>>>> 573bb45a (Initial project push)
+
       </div>
 
       {isLoading ? (
@@ -223,13 +216,13 @@ export default function EmployeeProspectsPage() {
                   </div>
               </div>
               <div className="rounded-md border shadow-sm bg-card">
-<<<<<<< HEAD
+
                   <Skeleton className="h-12 w-full rounded-t-md" />
                   <div className="space-y-2 p-4">
-=======
+
                   <Skeleton className="h-12 w-full rounded-t-md" /> {/* Header */}
                   <div className="space-y-2 p-4"> {/* Rows */}
->>>>>>> 573bb45a (Initial project push)
+
                       <Skeleton className="h-10 w-full" />
                       <Skeleton className="h-10 w-full" />
                       <Skeleton className="h-10 w-full" />
@@ -245,7 +238,6 @@ export default function EmployeeProspectsPage() {
                </div>
           </div>
       ) : !employeeId ? (
-<<<<<<< HEAD
         <p className="text-destructive text-center mt-10">Could not load prospects. User ID not found or not yet loaded.</p>
       ) : (
          <LeadDataTable
@@ -257,7 +249,7 @@ export default function EmployeeProspectsPage() {
          />
       )}
 
-=======
+
         <p className="text-destructive text-center mt-10">Could not load prospects. User ID not found.</p>
       ) : (
          <LeadDataTable
@@ -274,7 +266,7 @@ export default function EmployeeProspectsPage() {
       )}
 
       {/* Edit Dialog */}
->>>>>>> 573bb45a (Initial project push)
+
       {editingLead && (
         <LeadEditDialog
           lead={editingLead}
@@ -284,11 +276,11 @@ export default function EmployeeProspectsPage() {
            onSave={async (data) => {
                const result = await handleSave(data);
                if (!result.success) {
-<<<<<<< HEAD
+
                   throw new Error("API update failed"); 
-=======
+
                   throw new Error("API update failed"); // Propagate error
->>>>>>> 573bb45a (Initial project push)
+
                }
            }}
         />
@@ -296,7 +288,3 @@ export default function EmployeeProspectsPage() {
     </AppLayout>
   );
 }
-<<<<<<< HEAD
-=======
-    
->>>>>>> 573bb45a (Initial project push)

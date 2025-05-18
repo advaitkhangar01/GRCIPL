@@ -4,12 +4,12 @@
 import * as React from "react";
 import { AppLayout } from "@/components/layout/app-layout";
 import { LeadDataTable } from "@/components/leads/lead-data-table";
-<<<<<<< HEAD
+
 import type { Lead } from "@/types/lead";
 import { useToast } from "@/hooks/use-toast";
 import { fetchWonLeads, updateMockLead } from "@/lib/mock-data";
 import { Skeleton } from "@/components/ui/skeleton";
-=======
+
 // getColumns is handled internally by LeadDataTable
 // import { getColumns } from "@/components/leads/lead-table-columns";
 import type { Lead } from "@/types/lead";
@@ -37,14 +37,13 @@ async function updateWonLeadApi(updatedData: Partial<Lead>): Promise<{ success: 
   return { success: false, lead: originalLead }; // Simulate no update allowed, return original
 }
 
->>>>>>> 573bb45a (Initial project push)
 
 export default function WonLeadsPage() {
   const [leads, setLeads] = React.useState<Lead[]>([]);
   const [isLoading, setIsLoading] = React.useState(true);
   const { toast } = useToast();
 
-<<<<<<< HEAD
+
   const userRole = "admin";
 
   const loadData = React.useCallback(async () => {
@@ -52,7 +51,7 @@ export default function WonLeadsPage() {
     try {
       const wonLeadsData = await fetchWonLeads();
       setLeads(wonLeadsData);
-=======
+
   const userRole = "admin"; // This page is for admins
 
   // Fetch leads on component mount - Use useCallback
@@ -61,14 +60,14 @@ export default function WonLeadsPage() {
     try {
       const wonLeads = await fetchWonLeads();
       setLeads(wonLeads);
->>>>>>> 573bb45a (Initial project push)
+
     } catch (error) {
       console.error("Failed to fetch won leads:", error);
        toast({ variant: "destructive", title: "Error", description: "Could not load won leads data." });
     } finally {
       setIsLoading(false);
     }
-<<<<<<< HEAD
+
   }, [toast]);
 
   React.useEffect(() => {
@@ -83,7 +82,7 @@ export default function WonLeadsPage() {
 
    const handleEditDialog = (lead: Lead) => {
      toast({ variant: "destructive", title: "Action Denied", description: "Won leads cannot be edited." });
-=======
+
   }, [toast]); // Dependency on toast
 
   React.useEffect(() => {
@@ -103,7 +102,7 @@ export default function WonLeadsPage() {
    const handleEditDialog = (lead: Lead) => {
      toast({ variant: "destructive", title: "Action Denied", description: "Won leads cannot be edited." });
      // Do not open the dialog
->>>>>>> 573bb45a (Initial project push)
+
    };
 
 
@@ -111,10 +110,10 @@ export default function WonLeadsPage() {
     <AppLayout userRole={userRole}>
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-2xl font-semibold text-primary">Won by GRC</h1>
-<<<<<<< HEAD
-=======
+
+
          {/* Optionally add export button or summary info */}
->>>>>>> 573bb45a (Initial project push)
+
       </div>
 
       {isLoading ? (
@@ -127,13 +126,13 @@ export default function WonLeadsPage() {
                   </div>
               </div>
               <div className="rounded-md border shadow-sm bg-card">
-<<<<<<< HEAD
+
                   <Skeleton className="h-12 w-full rounded-t-md" /> 
                   <div className="space-y-2 p-4"> 
-=======
+
                   <Skeleton className="h-12 w-full rounded-t-md" /> {/* Header */}
                   <div className="space-y-2 p-4"> {/* Rows */}
->>>>>>> 573bb45a (Initial project push)
+
                       <Skeleton className="h-10 w-full" />
                       <Skeleton className="h-10 w-full" />
                       <Skeleton className="h-10 w-full" />
@@ -150,7 +149,7 @@ export default function WonLeadsPage() {
           </div>
       ) : (
          <LeadDataTable
-<<<<<<< HEAD
+
           data={leads}
           onEditDialog={handleEditDialog}
           onUpdate={handleSave}
@@ -161,7 +160,7 @@ export default function WonLeadsPage() {
     </AppLayout>
   );
 }
-=======
+
           // Columns are determined internally. Actions like edit/delete will be restricted by userRole.
           data={leads}
           onEditDialog={handleEditDialog} // Pass handler (though it prevents editing)
@@ -179,4 +178,4 @@ export default function WonLeadsPage() {
   );
 }
     
->>>>>>> 573bb45a (Initial project push)
+

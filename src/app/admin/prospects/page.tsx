@@ -4,20 +4,18 @@
 import * as React from "react";
 import { AppLayout } from "@/components/layout/app-layout";
 import { LeadDataTable } from "@/components/leads/lead-data-table";
-<<<<<<< HEAD
-=======
 // getColumns is managed within LeadDataTable
 // import { getColumns } from "@/components/leads/lead-table-columns";
->>>>>>> 573bb45a (Initial project push)
+
 import type { Lead } from "@/types/lead";
 import { LeadEditDialog } from "@/components/leads/lead-edit-dialog";
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import { UserPlus } from "lucide-react";
-<<<<<<< HEAD
-=======
+
+
 import { Checkbox } from "@/components/ui/checkbox"; // Import Checkbox
->>>>>>> 573bb45a (Initial project push)
+
 import {
   AlertDialog,
   AlertDialogAction,
@@ -30,11 +28,11 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-<<<<<<< HEAD
+
 import { fetchProspectLeads, fetchEmployees, updateMockLead, assignMockLeads, deleteMockLead } from "@/lib/mock-data";
 import { Skeleton } from "@/components/ui/skeleton";
 
-=======
+
 import { generateMockLeads } from "@/lib/mock-data"; // Import the mock data generator
 import { Skeleton } from "@/components/ui/skeleton";
 
@@ -102,16 +100,15 @@ async function updateLeadApi(updatedData: Partial<Lead>): Promise<{ success: boo
 }
 
 
->>>>>>> 573bb45a (Initial project push)
 export default function ProspectsPage() {
   const [leads, setLeads] = React.useState<Lead[]>([]);
   const [isLoading, setIsLoading] = React.useState(true);
   const [editingLead, setEditingLead] = React.useState<Lead | null>(null);
   const [isEditDialogOpen, setIsEditDialogOpen] = React.useState(false);
-<<<<<<< HEAD
-=======
+
+
   // Use table's internal row selection state
->>>>>>> 573bb45a (Initial project push)
+
   const [tableRowSelection, setTableRowSelection] = React.useState({});
   const [selectedLeadIds, setSelectedLeadIds] = React.useState<(number | string)[]>([]);
   const [employees, setEmployees] = React.useState<string[]>([]);
@@ -119,19 +116,19 @@ export default function ProspectsPage() {
   const [isReassigning, setIsReassigning] = React.useState(false);
   const { toast } = useToast();
 
-<<<<<<< HEAD
+
   const userRole = "admin";
 
   const loadData = React.useCallback(async () => {
       setIsLoading(true);
       setTableRowSelection({});
-=======
+
   const userRole = "admin"; // This page is for admins
 
   const loadData = React.useCallback(async () => { // Memoize loadData
       setIsLoading(true);
       setTableRowSelection({}); // Reset selection on load
->>>>>>> 573bb45a (Initial project push)
+
       setSelectedLeadIds([]);
       try {
         const [prospects, employeeList] = await Promise.all([
@@ -146,7 +143,7 @@ export default function ProspectsPage() {
       } finally {
         setIsLoading(false);
       }
-<<<<<<< HEAD
+
     }, [toast]); // fetchProspectLeads and fetchEmployees are stable
 
   React.useEffect(() => {
@@ -158,7 +155,7 @@ export default function ProspectsPage() {
           const index = parseInt(indexStr, 10);
           return leads[index]?.id;
       }).filter(id => id !== undefined) as (number | string)[];
-=======
+
     }, [toast]); // Dependency on toast
 
   // Fetch leads and employees on component mount
@@ -172,12 +169,12 @@ export default function ProspectsPage() {
           const index = parseInt(indexStr, 10);
           return leads[index]?.id; // Get the ID from the leads array using the index
       }).filter(id => id !== undefined) as (number | string)[]; // Filter out undefined IDs
->>>>>>> 573bb45a (Initial project push)
+
       setSelectedLeadIds(selectedIds);
   }, [tableRowSelection, leads]);
 
 
-<<<<<<< HEAD
+
   const handleEditDialog = React.useCallback((lead: Lead) => {
     setEditingLead({...lead});
     setIsEditDialogOpen(true);
@@ -193,7 +190,7 @@ export default function ProspectsPage() {
     if (result.success && result.lead) {
         const shouldRemain = result.lead.callOutcome === "Prospect" || ["Hot", "Warm", "Cold", "Very Cold"].includes(result.lead.leadStatus || "");
         if (shouldRemain) {
-=======
+
   // Edit handlers
   const handleEditDialog = (lead: Lead) => {
     setEditingLead({...lead}); // Pass a copy to prevent direct mutation
@@ -211,12 +208,12 @@ export default function ProspectsPage() {
 
         if (shouldRemain) {
             // Update the lead in the current view
->>>>>>> 573bb45a (Initial project push)
+
             setLeads(prevLeads =>
               prevLeads.map(l => (l.id === result.lead!.id ? result.lead! : l))
             );
         } else {
-<<<<<<< HEAD
+
              setLeads(prevLeads => prevLeads.filter(l => l.id !== result.lead!.id));
              toast({ title: "Lead Updated", description: `Lead "${result.lead.name}" moved from Prospects.` });
         }
@@ -229,7 +226,7 @@ export default function ProspectsPage() {
   }, [toast]);
 
    const handleReassign = React.useCallback(async () => {
-=======
+
              // Remove the lead from the current view as it's no longer a prospect
              setLeads(prevLeads => prevLeads.filter(l => l.id !== result.lead!.id));
              toast({ title: "Lead Updated", description: `Lead "${result.lead.name}" moved from Prospects.` });
@@ -243,27 +240,27 @@ export default function ProspectsPage() {
 
    // Reassign handler
    const handleReassign = async () => {
->>>>>>> 573bb45a (Initial project push)
+
      if (selectedLeadIds.length === 0 || !targetEmployee) {
        toast({ variant: "destructive", title: "Reassignment Error", description: "Please select leads and a target employee." });
        return;
      }
      setIsReassigning(true);
      try {
-<<<<<<< HEAD
+
        const result = await assignMockLeads(selectedLeadIds, targetEmployee); // Use assignMockLeads
        if (result.success) {
          toast({ title: "Reassignment Successful", description: `${selectedLeadIds.length} prospects reassigned to ${targetEmployee}.` });
          await loadData(); // Re-fetch data
          setTargetEmployee('');
-=======
+
        const result = await reassignLeadsApi(selectedLeadIds, targetEmployee);
        if (result.success) {
          toast({ title: "Reassignment Successful", description: `${selectedLeadIds.length} prospects reassigned to ${targetEmployee}.` });
          // Refresh the prospects list after reassignment
          await loadData(); // Reload data to reflect changes
          setTargetEmployee(''); // Clear target employee
->>>>>>> 573bb45a (Initial project push)
+
        } else {
           toast({ variant: "destructive", title: "Reassignment Failed", description: "Could not reassign leads." });
        }
@@ -273,7 +270,7 @@ export default function ProspectsPage() {
      } finally {
        setIsReassigning(false);
      }
-<<<<<<< HEAD
+
    }, [selectedLeadIds, targetEmployee, toast, loadData]); // Added loadData to dependencies
    
    const handleDelete = React.useCallback(async (leadId: string | number) => {
@@ -285,24 +282,24 @@ export default function ProspectsPage() {
             toast({ variant: "destructive", title: "Delete Failed", description: "Could not delete lead from prospects." });
         }
    }, [toast]);
-=======
+
    };
 
   // Log selected IDs for debugging
    React.useEffect(() => {
      console.log("Selected Lead IDs:", selectedLeadIds);
    }, [selectedLeadIds]);
->>>>>>> 573bb45a (Initial project push)
+
 
 
   return (
     <AppLayout userRole={userRole}>
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-2xl font-semibold text-primary">Prospects</h1>
-<<<<<<< HEAD
-=======
+
+
          {/* Reassign Action Area */}
->>>>>>> 573bb45a (Initial project push)
+
          <AlertDialog>
            <AlertDialogTrigger asChild>
              <Button size="sm" disabled={isLoading || selectedLeadIds.length === 0 || isReassigning}>
@@ -349,13 +346,13 @@ export default function ProspectsPage() {
                   </div>
               </div>
               <div className="rounded-md border shadow-sm bg-card">
-<<<<<<< HEAD
+
                   <Skeleton className="h-12 w-full rounded-t-md" /> 
                   <div className="space-y-2 p-4"> 
-=======
+
                   <Skeleton className="h-12 w-full rounded-t-md" /> {/* Header */}
                   <div className="space-y-2 p-4"> {/* Rows */}
->>>>>>> 573bb45a (Initial project push)
+
                       <Skeleton className="h-10 w-full" />
                       <Skeleton className="h-10 w-full" />
                       <Skeleton className="h-10 w-full" />
@@ -372,7 +369,7 @@ export default function ProspectsPage() {
           </div>
       ) : (
          <LeadDataTable
-<<<<<<< HEAD
+
            data={leads}
            onEditDialog={handleEditDialog}
            onUpdate={handleSave} 
@@ -385,7 +382,7 @@ export default function ProspectsPage() {
          />
       )}
 
-=======
+
           // Columns are determined internally based on userRole and inline edit state
            data={leads}
            onEditDialog={handleEditDialog}
@@ -408,7 +405,7 @@ export default function ProspectsPage() {
       )}
 
       {/* Edit Dialog */}
->>>>>>> 573bb45a (Initial project push)
+
       {editingLead && (
         <LeadEditDialog
           lead={editingLead}
@@ -418,11 +415,11 @@ export default function ProspectsPage() {
            onSave={async (data) => {
                const result = await handleSave(data);
                if (!result.success) {
-<<<<<<< HEAD
+
                   throw new Error("API update failed");
-=======
+
                   throw new Error("API update failed"); // Propagate error
->>>>>>> 573bb45a (Initial project push)
+
                }
            }}
         />
@@ -430,7 +427,7 @@ export default function ProspectsPage() {
     </AppLayout>
   );
 }
-<<<<<<< HEAD
-=======
+
+
     
->>>>>>> 573bb45a (Initial project push)
+
