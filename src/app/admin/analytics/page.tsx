@@ -63,18 +63,18 @@ async function fetchAnalyticsData(): Promise<AnalyticsData> {
       currentPerf.assigned += 1;
       if (lead.callOutcome === 'Prospect') currentPerf.prospects += 1;
       if (lead.callOutcome === 'Won by GRC') currentPerf.won += 1;
-<<<<<<< HEAD
+
     }
   });
   const employeePerformance: EmployeePerformance[] = Array.from(employeePerfMap, ([employee, data]) => ({ employee, ...data }))
     .filter(emp => emp.assigned > 0 || emp.prospects > 0 || emp.won > 0 || (emp.employee === "Unassigned" && allLeads.some(l => !l.assignedTo)));
-=======
+
       // No need to set again, object reference is updated
     }
   });
   const employeePerformance: EmployeePerformance[] = Array.from(employeePerfMap, ([employee, data]) => ({ employee, ...data }))
     .filter(emp => emp.assigned > 0 || emp.prospects > 0 || emp.won > 0 || (emp.employee === "Unassigned" && allLeads.some(l => !l.assignedTo))); // Fix: Use emp.employee
->>>>>>> 573bb45a (Initial project push)
+
 
   // Calculate Source Counts
   const sourceCountsMap = new Map<string, number>();
@@ -95,7 +95,7 @@ export default function AnalyticsDashboardPage() {
   const [error, setError] = React.useState<string | null>(null);
   const { toast } = useToast();
 
-<<<<<<< HEAD
+
   const loadData = React.useCallback(async () => {
     setIsLoading(true);
     setError(null); // Reset error on new load attempt
@@ -115,7 +115,7 @@ export default function AnalyticsDashboardPage() {
   React.useEffect(() => {
     loadData();
   }, [loadData]);
-=======
+
   React.useEffect(() => {
     const loadData = async () => {
       setIsLoading(true);
@@ -134,7 +134,7 @@ export default function AnalyticsDashboardPage() {
     };
     loadData();
   }, [toast]); // Dependency on toast
->>>>>>> 573bb45a (Initial project push)
+
 
   const renderContent = () => {
     if (isLoading) {
@@ -146,11 +146,11 @@ export default function AnalyticsDashboardPage() {
               <Skeleton className="h-4 w-1/2" />
             </CardHeader>
             <CardContent>
-<<<<<<< HEAD
+
               <Skeleton className="h-[300px] w-full" />
-=======
+
               <Skeleton className="h-[300px] w-full" /> {/* Increased skeleton height */}
->>>>>>> 573bb45a (Initial project push)
+
             </CardContent>
           </Card>
           <Card className="lg:col-span-2">
@@ -183,10 +183,9 @@ export default function AnalyticsDashboardPage() {
       return <p className="text-muted-foreground">No analytics data available to display.</p>;
     }
 
-<<<<<<< HEAD
-=======
+
     // Check if data arrays are valid before rendering charts
->>>>>>> 573bb45a (Initial project push)
+
     const hasOutcomeData = analyticsData.outcomeCounts && analyticsData.outcomeCounts.length > 0;
     const hasEmployeeData = analyticsData.employeePerformance && analyticsData.employeePerformance.length > 0;
     const hasSourceData = analyticsData.sourceCounts && analyticsData.sourceCounts.length > 0;
@@ -199,11 +198,11 @@ export default function AnalyticsDashboardPage() {
               <CardTitle>Call Outcome Distribution</CardTitle>
               <CardDescription>Breakdown of lead outcomes from calls.</CardDescription>
             </CardHeader>
-<<<<<<< HEAD
+
             <CardContent className="pt-4">
-=======
+
             <CardContent className="pt-4"> {/* Added padding top to content */}
->>>>>>> 573bb45a (Initial project push)
+
               <CallOutcomeChart data={analyticsData.outcomeCounts} />
             </CardContent>
           </Card>
@@ -213,11 +212,11 @@ export default function AnalyticsDashboardPage() {
                <CardTitle>Call Outcome Distribution</CardTitle>
                <CardDescription>Breakdown of lead outcomes from calls.</CardDescription>
              </CardHeader>
-<<<<<<< HEAD
+
              <CardContent className="h-[300px] flex items-center justify-center text-muted-foreground">
-=======
+
              <CardContent className="h-[300px] flex items-center justify-center text-muted-foreground"> {/* Adjusted height */}
->>>>>>> 573bb45a (Initial project push)
+
                  No outcome data available.
              </CardContent>
             </Card>
@@ -276,8 +275,8 @@ export default function AnalyticsDashboardPage() {
       {renderContent()}
     </AppLayout>
   );
-<<<<<<< HEAD
+
 }
-=======
+
 }
->>>>>>> 573bb45a (Initial project push)
+
