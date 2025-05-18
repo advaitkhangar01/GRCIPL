@@ -1,8 +1,8 @@
 
-<<<<<<< HEAD
-=======
+
+
 "use client";
->>>>>>> 6b1a0c8 (Your commit message)
+
 
 import * as React from "react";
 import { AppLayout } from "@/components/layout/app-layout";
@@ -187,10 +187,9 @@ export default function AnalyticsDashboardPage() {
       return <p className="text-muted-foreground">No analytics data available to display.</p>;
     }
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 6b1a0c8 (Your commit message)
+
+
     // Check if data arrays are valid before rendering charts
 
     const hasOutcomeData = analyticsData.outcomeCounts && analyticsData.outcomeCounts.length > 0;

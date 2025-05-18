@@ -62,10 +62,7 @@ export default function AssignLeadsPage() {
   const { toast } = useToast();
 
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 6b1a0c8 (Your commit message)
   // Memoize loadData to prevent re-creation on every render
 
   const loadData = useCallback(async () => {
@@ -157,15 +154,9 @@ export default function AssignLeadsPage() {
      } finally {
        setIsLoading(false);
      }
-<<<<<<< HEAD
-
-   }, [selectedLeads, selectedEmployee, toast, loadData]); // Added loadData as dependency
-   };
-=======
    }, [selectedLeads, selectedEmployee, toast, loadData]); // Added loadData as dependency
    
   };
->>>>>>> 6b1a0c8 (Your commit message)
 
 
 
@@ -237,9 +228,3 @@ export default function AssignLeadsPage() {
   );
 }
 
-<<<<<<< HEAD
- 
-
-
-=======
->>>>>>> 6b1a0c8 (Your commit message)

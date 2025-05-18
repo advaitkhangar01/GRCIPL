@@ -6,30 +6,18 @@ import { AppLayout } from "@/components/layout/app-layout";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
-<<<<<<< HEAD
-
-=======
->>>>>>> 6b1a0c8 (Your commit message)
 import { Calendar } from "@/components/ui/calendar"; 
 import { format, parseISO, isValid, differenceInHours, differenceInMinutes, parse } from 'date-fns';
 import type { AttendanceRecord } from "@/types/attendance";
 import { useToast } from "@/hooks/use-toast";
 import { fetchAllAttendance } from "@/lib/mock-data"; 
 import { Skeleton } from "@/components/ui/skeleton"; 
-<<<<<<< HEAD
-
-=======
->>>>>>> 6b1a0c8 (Your commit message)
 import { Calendar } from "@/components/ui/calendar"; // Import Calendar
 import { format, parseISO, isValid, differenceInHours, differenceInMinutes, parse } from 'date-fns';
 import type { AttendanceRecord } from "@/types/attendance";
 import { useToast } from "@/hooks/use-toast";
 import { fetchAllAttendance } from "@/lib/mock-data"; // Import mock function
 import { Skeleton } from "@/components/ui/skeleton"; // Import Skeleton
-<<<<<<< HEAD
-
-=======
->>>>>>> 6b1a0c8 (Your commit message)
 
 // Helper to get status badge
 const getStatusBadge = (inTime: string | null, outTime: string | null): React.ReactNode => {
@@ -152,10 +140,6 @@ export default function AdminAttendancePage() {
           modifiers.inOffice.push(recordDate);
         } else {
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 6b1a0c8 (Your commit message)
            // For 'all', only mark absent if *all* filtered records for that date are absent?
            // Simpler: Mark absent if *any* record is absent when filtering by employee,
            // or if a date has records but none are present/inOffice when 'all' is selected.
@@ -182,10 +166,6 @@ export default function AdminAttendancePage() {
   const handleDateSelect = (date: Date | undefined) => {
     setSelectedDate(date);
   };
-<<<<<<< HEAD
-=======
-
->>>>>>> 6b1a0c8 (Your commit message)
 
    // Get attendance details for the selected date
    const selectedDateRecords = React.useMemo(() => {
@@ -333,8 +313,3 @@ export default function AdminAttendancePage() {
 }
 
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 6b1a0c8 (Your commit message)
