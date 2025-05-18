@@ -6,21 +6,21 @@ import { AppLayout } from "@/components/layout/app-layout";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
-<<<<<<< HEAD
+
 import { Calendar } from "@/components/ui/calendar"; 
 import { format, parseISO, isValid, differenceInHours, differenceInMinutes, parse } from 'date-fns';
 import type { AttendanceRecord } from "@/types/attendance";
 import { useToast } from "@/hooks/use-toast";
 import { fetchAllAttendance } from "@/lib/mock-data"; 
 import { Skeleton } from "@/components/ui/skeleton"; 
-=======
+
 import { Calendar } from "@/components/ui/calendar"; // Import Calendar
 import { format, parseISO, isValid, differenceInHours, differenceInMinutes, parse } from 'date-fns';
 import type { AttendanceRecord } from "@/types/attendance";
 import { useToast } from "@/hooks/use-toast";
 import { fetchAllAttendance } from "@/lib/mock-data"; // Import mock function
 import { Skeleton } from "@/components/ui/skeleton"; // Import Skeleton
->>>>>>> 573bb45a (Initial project push)
+
 
 // Helper to get status badge
 const getStatusBadge = (inTime: string | null, outTime: string | null): React.ReactNode => {
@@ -107,11 +107,11 @@ export default function AdminAttendancePage() {
       }
     };
     loadData();
-<<<<<<< HEAD
+
   }, [toast]); // fetchAllAttendance is stable
-=======
+
   }, [toast]);
->>>>>>> 573bb45a (Initial project push)
+
 
   // Effect to filter attendance and update calendar modifiers when employee or data changes
   React.useEffect(() => {
@@ -142,13 +142,12 @@ export default function AdminAttendancePage() {
         } else if (record.inTime && !record.outTime) {
           modifiers.inOffice.push(recordDate);
         } else {
-<<<<<<< HEAD
-=======
+
            // For 'all', only mark absent if *all* filtered records for that date are absent?
            // Simpler: Mark absent if *any* record is absent when filtering by employee,
            // or if a date has records but none are present/inOffice when 'all' is selected.
            // Let's mark absent if the specific record is absent. Refinement might be needed for 'all'.
->>>>>>> 573bb45a (Initial project push)
+
            modifiers.absent.push(recordDate);
         }
         processedDates.add(dateStr);
@@ -162,15 +161,14 @@ export default function AdminAttendancePage() {
   }, [selectedEmployee, allAttendance]);
 
 
-<<<<<<< HEAD
+
   const handleDateSelect = React.useCallback((date: Date | undefined) => {
     setSelectedDate(date);
   }, []);
-=======
+
   const handleDateSelect = (date: Date | undefined) => {
     setSelectedDate(date);
   };
->>>>>>> 573bb45a (Initial project push)
 
    // Get attendance details for the selected date
    const selectedDateRecords = React.useMemo(() => {
@@ -218,28 +216,28 @@ export default function AdminAttendancePage() {
                           mode="single"
                           selected={selectedDate}
                           onSelect={handleDateSelect}
-<<<<<<< HEAD
+
                           className="rounded-md border w-full" 
-=======
+
                           className="rounded-md border w-full" // Adjust width as needed
->>>>>>> 573bb45a (Initial project push)
+
                            modifiers={{
                                present: attendanceModifiers.present,
                                inOffice: attendanceModifiers.inOffice,
                                absent: attendanceModifiers.absent,
                            }}
                            modifiersStyles={{
-<<<<<<< HEAD
+
                                 present: { 
-=======
+
                                 present: { // Green solid circle
->>>>>>> 573bb45a (Initial project push)
+
                                     border: '2px solid hsl(var(--booked))',
                                     backgroundColor: 'hsl(var(--booked))',
                                     color: 'hsl(var(--booked-foreground))',
                                     borderRadius: '50%',
                                 },
-<<<<<<< HEAD
+
                                 inOffice: { 
                                      border: '2px solid #F59E0B', 
                                      borderRadius: '50%',
@@ -249,7 +247,7 @@ export default function AdminAttendancePage() {
                                      backgroundColor: 'hsl(var(--destructive))',
                                       color: 'hsl(var(--destructive-foreground))',
                                      borderRadius: '0%', 
-=======
+
                                 inOffice: { // Yellow outline circle
                                      border: '2px solid #F59E0B', // Tailwind yellow-500
                                      borderRadius: '50%',
@@ -259,7 +257,7 @@ export default function AdminAttendancePage() {
                                      backgroundColor: 'hsl(var(--destructive))',
                                       color: 'hsl(var(--destructive-foreground))',
                                      borderRadius: '0%', // Square
->>>>>>> 573bb45a (Initial project push)
+
                                 }
                            }}
                        />
@@ -316,7 +314,7 @@ export default function AdminAttendancePage() {
     </AppLayout>
   );
 }
-<<<<<<< HEAD
-=======
 
->>>>>>> 573bb45a (Initial project push)
+
+
+
