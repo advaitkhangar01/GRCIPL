@@ -4,7 +4,7 @@
 import * as React from "react";
 import { AppLayout } from "@/components/layout/app-layout";
 import { LeadDataTable } from "@/components/leads/lead-data-table";
-<<<<<<< HEAD
+
 import type { Lead } from "@/types/lead";
 import { LeadEditDialog } from "@/components/leads/lead-edit-dialog";
 import { Button } from "@/components/ui/button";
@@ -13,7 +13,7 @@ import Link from "next/link";
 import { useToast } from "@/hooks/use-toast";
 import { fetchAdminLeads, updateMockLead, deleteMockLead, fetchEmployees as fetchAllEmployees } from "@/lib/mock-data";
 import { Skeleton } from "@/components/ui/skeleton";
-=======
+
 // getColumns is now handled within LeadDataTable based on inline edit state
 // import { getColumns } from "@/components/leads/lead-table-columns";
 import type { Lead } from "@/types/lead";
@@ -85,14 +85,14 @@ async function deleteLeadApi(leadId: number | string): Promise<{ success: boolea
   }
   return { success: true }; // Assume success for demo
 }
->>>>>>> 573bb45a (Initial project push)
+
 
 export default function AdminDashboard() {
   const [leads, setLeads] = React.useState<Lead[]>([]);
   const [isLoading, setIsLoading] = React.useState(true);
   const [editingLead, setEditingLead] = React.useState<Lead | null>(null);
   const [isEditDialogOpen, setIsEditDialogOpen] = React.useState(false);
-<<<<<<< HEAD
+
   const [availableEmployees, setAvailableEmployees] = React.useState<string[]>([]);
   const { toast } = useToast();
 
@@ -153,7 +153,7 @@ export default function AdminDashboard() {
     const result = await deleteMockLead(leadId);
     if (result.success) {
       setLeads(prevLeads => prevLeads.filter(l => l.id !== leadId));
-=======
+
   const [availableEmployees, setAvailableEmployees] = React.useState<string[]>([]); // State for employee list
   const { toast } = useToast();
 
@@ -221,12 +221,12 @@ export default function AdminDashboard() {
     const result = await deleteLeadApi(leadId);
     if (result.success) {
       setLeads(prevLeads => prevLeads.filter(l => l.id !== leadId)); // Update local state
->>>>>>> 573bb45a (Initial project push)
+
       toast({ title: "Lead Deleted", description: `Lead ID ${leadId} has been removed.` });
     } else {
       toast({ variant: "destructive", title: "Delete Failed", description: "Could not delete lead." });
     }
-<<<<<<< HEAD
+
   }, [toast]);
 
   return (
@@ -234,7 +234,7 @@ export default function AdminDashboard() {
        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 sm:mb-6 gap-3 sm:gap-4">
          <h1 className="text-xl sm:text-2xl font-semibold text-primary">Admin Dashboard - All Leads</h1>
           <div className="flex flex-wrap gap-2 self-start sm:self-center">
-=======
+
   };
 
   return (
@@ -244,7 +244,7 @@ export default function AdminDashboard() {
          <h1 className="text-xl sm:text-2xl font-semibold text-primary">Admin Dashboard - All Leads</h1>
           <div className="flex flex-wrap gap-2 self-start sm:self-center"> {/* Align buttons to start on small screens */}
              {/* Add links/buttons for Admin actions */}
->>>>>>> 573bb45a (Initial project push)
+
             <Link href="/admin/upload" passHref>
                <Button variant="default" size="sm"><Upload className="mr-2 h-4 w-4" /> Upload</Button>
             </Link>
@@ -258,10 +258,10 @@ export default function AdminDashboard() {
        </div>
 
       {isLoading ? (
-<<<<<<< HEAD
-=======
+
+
           // Skeleton Loader for Table
->>>>>>> 573bb45a (Initial project push)
+
           <div className="space-y-4">
               <div className="flex justify-between">
                   <Skeleton className="h-9 w-1/3" />
@@ -271,13 +271,13 @@ export default function AdminDashboard() {
                   </div>
               </div>
               <div className="rounded-md border shadow-sm bg-card">
-<<<<<<< HEAD
+
                   <Skeleton className="h-12 w-full rounded-t-md" />
                   <div className="space-y-2 p-4">
-=======
+
                   <Skeleton className="h-12 w-full rounded-t-md" /> {/* Header */}
                   <div className="space-y-2 p-4"> {/* Rows */}
->>>>>>> 573bb45a (Initial project push)
+
                       <Skeleton className="h-10 w-full" />
                       <Skeleton className="h-10 w-full" />
                       <Skeleton className="h-10 w-full" />
@@ -294,7 +294,7 @@ export default function AdminDashboard() {
           </div>
       ) : (
         <LeadDataTable
-<<<<<<< HEAD
+
           data={leads}
           onEditDialog={handleEditDialog}
           onDelete={handleDelete}
@@ -305,7 +305,7 @@ export default function AdminDashboard() {
         />
       )}
 
-=======
+
           // Columns are now determined internally by LeadDataTable based on inline edit state
           data={leads}
           onEditDialog={handleEditDialog} // Pass the dialog edit handler
@@ -318,14 +318,14 @@ export default function AdminDashboard() {
       )}
 
       {/* Edit Dialog */}
->>>>>>> 573bb45a (Initial project push)
+
        {editingLead && (
           <LeadEditDialog
             lead={editingLead}
             isOpen={isEditDialogOpen}
             onClose={handleCloseDialog}
             userRole={userRole}
-<<<<<<< HEAD
+
             onSave={async (data) => {
                  const result = await handleSave(data);
                  if (!result.success) {
@@ -337,7 +337,7 @@ export default function AdminDashboard() {
     </AppLayout>
   );
 }
-=======
+
             // Use a wrapper for onSave to match expected signature if needed, or adjust LeadEditDialog
             onSave={async (data) => {
                  const result = await handleSave(data);
@@ -353,4 +353,4 @@ export default function AdminDashboard() {
   );
 }
     
->>>>>>> 573bb45a (Initial project push)
+
