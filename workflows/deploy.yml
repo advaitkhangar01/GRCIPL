@@ -1,0 +1,39 @@
+name: Deploy to Vercel
+
+on:
+  push:
+    branches:
+      - main # Or your deployment branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18' # Or the Node.js version your project uses
+
+      - name: Install dependencies
+        run: npm ci # Use 'npm install' if you don't have a package-lock.json
+
+      - name: Build Next.js app
+        run: npm run build
+        env:
+          # Add any build-time environment variables here if needed
+          # EXAMPLE_ENV_VAR: ${{ secrets.EXAMPLE_BUILD_SECRET }}
+          # Make sure Vercel has access to required build env vars too
+          GOOGLE_GENAI_API_KEY: ${{ secrets.GOOGLE_GENAI_API_KEY }} # Ensure this is set in Vercel too
+
+      - name: Deploy to Vercel
+        uses: amondnet/vercel-action@v20 # Or use the official Vercel CLI action
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          vercel-args: '--prod' # Deploy to production
+          # Optional: specify working directory if needed
+          # working-directory: ./your-subdirectory

@@ -1,0 +1,260 @@
+<<<<<<< HEAD
+
+=======
+>>>>>>> 573bb45a (Initial project push)
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+<<<<<<< HEAD
+@layer base {
+  :root {
+    --background: 210 20% 96%; /* Light Blueish Grey */
+    --foreground: 220 40% 15%; /* Very Dark Navy, almost black */
+
+    --card: 0 0% 100%; /* White */
+    --card-foreground: 220 40% 15%; /* Very Dark Navy */
+    --popover: 0 0% 100%; /* White */
+    --popover-foreground: 220 40% 15%; /* Very Dark Navy */
+
+    --primary: 220 55% 40%; /* Solid Navy Blue */
+    --primary-foreground: 0 0% 98%; /* Off-White */
+
+    --secondary: 210 25% 90%; /* Lighter Blueish Grey */
+    --secondary-foreground: 220 40% 25%; /* Dark Navy */
+
+    --muted: 210 20% 92%; /* Very Light Blueish Grey */
+    --muted-foreground: 210 15% 50%; /* Medium Grey */
+
+    --accent: 210 15% 75%; /* Medium-Light Grey (neutral accent) */
+    --accent-foreground: 220 40% 15%; /* Very Dark Navy (text on accent) */
+
+    --destructive: 0 84.2% 60.2%; /* ShadCN default red */
+    --destructive-foreground: 0 0% 98%; /* ShadCN default white */
+
+    --border: 210 20% 80%; /* Light Grey for borders */
+    --input: 0 0% 100%; /* White, relying on border for definition */
+    --ring: 220 55% 55%; /* A slightly lighter/brighter Navy for focus rings */
+
+    /* Custom colors - kept for existing components, can be adjusted if needed */
+    --booked: 120 60% 45%; /* Green - can be changed to a shade of blue/grey if preferred */
+    --booked-foreground: 0 0% 98%;
+    --prospect: 10 84% 58%;  /* Orange-Red - can be changed */
+    --prospect-foreground: 0 0% 100%;
+
+    /* Chart colors aligned with new palette */
+    --chart-1: 220 55% 40%; /* Navy Blue (primary) */
+    --chart-2: 220 50% 60%; /* Lighter Navy/Blue */
+    --chart-3: 210 15% 70%; /* Medium Grey */
+    --chart-4: 210 10% 50%; /* Darker Grey */
+    --chart-5: 210 20% 85%; /* Lightest Grey */
+
+    /* Sidebar colors */
+    --sidebar-background: 220 40% 18%; /* Very Dark Navy */
+    --sidebar-foreground: 0 0% 90%; /* Light Grey/White */
+    --sidebar-primary: 220 55% 50%; /* Navy - for active items */
+    --sidebar-primary-foreground: 0 0% 98%; /* White */
+    --sidebar-accent: 220 40% 25%; /* Darker Navy for hover */
+    --sidebar-accent-foreground: 0 0% 98%; /* White */
+    --sidebar-border: 220 40% 22%; /* Slightly lighter than sidebar background */
+    --sidebar-ring: 220 55% 55%; /* Navy */
+  }
+
+  .dark {
+    --background: 220 30% 10%; /* Dark Navy/Almost Black */
+    --foreground: 210 20% 94%; /* Light Grey/Off-White */
+
+    --card: 220 30% 15%; /* Darker Navy */
+    --card-foreground: 210 20% 94%; /* Light Grey/Off-White */
+    --popover: 220 30% 10%; /* Dark Navy/Almost Black */
+    --popover-foreground: 210 20% 94%; /* Light Grey/Off-White */
+
+    --primary: 220 60% 60%; /* Brighter Navy for dark mode */
+    --primary-foreground: 220 30% 10%; /* Dark Navy/Black (text on primary) */
+
+    --secondary: 220 30% 20%; /* Slightly lighter dark navy */
+    --secondary-foreground: 210 20% 90%; /* Off-White */
+
+    --muted: 220 30% 20%; /* Same as secondary dark */
+    --muted-foreground: 210 15% 65%; /* Lighter Grey */
+
+    --accent: 210 15% 40%; /* Darker Grey (neutral accent for dark mode) */
+    --accent-foreground: 210 20% 94%; /* Light Grey/White (text on accent) */
+
+    --destructive: 0 70% 50%; /* Adjusted red for dark mode */
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 220 30% 30%; /* Darker Grey/Navy border */
+    --input: 220 30% 18%; /* Dark input background */
+    --ring: 220 60% 70%; /* Even brighter Navy for focus rings */
+
+    /* Custom colors for dark mode */
+    --booked: 120 50% 55%; /* Adjusted Green for dark mode */
+    --booked-foreground: 220 30% 10%;
+    --prospect: 10 70% 60%;  /* Adjusted Orange-Red for dark mode */
+    --prospect-foreground: 0 0% 10%;
+
+    /* Chart colors for dark mode */
+    --chart-1: 220 60% 60%; /* Brighter Navy */
+    --chart-2: 220 50% 70%; /* Lighter Blue */
+    --chart-3: 210 15% 50%; /* Medium Grey */
+    --chart-4: 210 10% 30%; /* Darker Grey */
+    --chart-5: 210 20% 20%; /* Very Dark Grey */
+
+    /* Sidebar dark theme adjustments are usually handled by the main dark theme variables */
+    /* If specific overrides are needed, they can be added here, but generally --sidebar-background is already dark. */
+=======
+body {
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+@layer base {
+  :root {
+    --background: 200 17% 94%; /* Light Gray (#ecf0f1) */
+    --foreground: 210 29% 18%; /* Darker shade near Dark Blue for text */
+    --card: 0 0% 100%;
+    --card-foreground: 210 29% 18%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 210 29% 18%;
+    --primary: 210 29% 24%; /* Dark Blue (#2c3e50) */
+    --primary-foreground: 0 0% 98%;
+    --secondary: 200 17% 90%; /* Slightly darker gray for secondary elements */
+    --secondary-foreground: 210 29% 24%;
+    --muted: 200 17% 85%; /* Muted gray */
+    --muted-foreground: 210 15% 45%;
+    --accent: 205 70% 53%; /* Teal (#3498db) */
+    --accent-foreground: 0 0% 100%; /* White text on accent */
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 210 20% 80%; /* Border color derived from theme */
+    --input: 0 0% 100%; /* White input background */
+    --input-border: 210 20% 80%; /* Use border color for input borders */
+    --ring: 205 70% 53%; /* Accent color for rings */
+    --chart-1: 205 70% 53%;
+    --chart-2: 210 29% 44%;
+    --chart-3: 210 29% 64%;
+    --chart-4: 195 60% 60%;
+    --chart-5: 200 50% 70%;
+    --radius: 0.5rem;
+    --sidebar-background: 210 29% 24%; /* Dark Blue */
+    --sidebar-foreground: 0 0% 98%; /* White */
+    --sidebar-primary: 205 70% 53%; /* Teal */
+    --sidebar-primary-foreground: 0 0% 100%; /* White */
+    --sidebar-accent: 210 29% 34%; /* Slightly lighter blue */
+    --sidebar-accent-foreground: 0 0% 98%; /* White */
+    --sidebar-border: 210 20% 40%;
+    --sidebar-ring: 205 70% 53%; /* Teal */
+
+    /* Custom colors */
+    --booked: 100 58% 42%; /* Green (#4CBB17) */
+    --booked-foreground: 0 0% 98%; /* White/Light text on booked */
+    --prospect: 10 84% 58%; /* Red (#EE4B2B) */
+    --prospect-foreground: 0 0% 100%; /* White text on prospect */
+  }
+  .dark {
+    /* Keeping dark theme variables, but adjusting primary/accent to match light */
+    --background: 210 29% 10%; /* Very dark blue */
+    --foreground: 0 0% 98%;
+    --card: 210 29% 14%;
+    --card-foreground: 0 0% 98%;
+    --popover: 210 29% 10%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 210 29% 70%; /* Lighter blue for dark mode primary */
+    --primary-foreground: 210 29% 10%;
+    --secondary: 210 29% 20%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 210 29% 20%;
+    --muted-foreground: 210 15% 65%;
+    --accent: 205 70% 53%; /* Teal - Keep consistent */
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 210 20% 30%;
+    --input: 210 29% 16%;
+    --input-border: 210 20% 30%;
+    --ring: 205 70% 53%; /* Teal */
+    --chart-1: 205 70% 53%;
+    --chart-2: 210 29% 54%;
+    --chart-3: 210 29% 34%;
+    --chart-4: 195 60% 40%;
+    --chart-5: 200 50% 50%;
+    --sidebar-background: 210 29% 10%; /* Very dark blue */
+    --sidebar-foreground: 0 0% 98%; /* White */
+    --sidebar-primary: 205 70% 53%; /* Teal */
+    --sidebar-primary-foreground: 0 0% 100%; /* White */
+    --sidebar-accent: 210 29% 20%; /* Darker muted blue */
+    --sidebar-accent-foreground: 0 0% 98%; /* White */
+    --sidebar-border: 210 20% 30%;
+    --sidebar-ring: 205 70% 53%; /* Teal */
+
+     /* Custom colors */
+    --booked: 100 58% 52%; /* Lighter Green for dark mode */
+    --booked-foreground: 210 29% 10%; /* Dark text on booked */
+    --prospect: 10 84% 68%; /* Lighter Red for dark mode */
+    --prospect-foreground: 0 0% 10%; /* Dark text on prospect */
+>>>>>>> 573bb45a (Initial project push)
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+<<<<<<< HEAD
+    /* font-feature-settings: "rlig" 1, "calt" 1; // Keep if using specific fonts that benefit */
+  }
+  input, textarea, select {
+    /* border-color: hsl(var(--input)); Use Tailwind's border-input class directly on elements */
+  }
+}
+
+=======
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  input, textarea, select {
+     /* Apply custom input border color using the CSS variable */
+     /* Corrected: Use @apply border-input instead of border-color: hsl(var(--input-border)); */
+     /* No, keep the CSS variable approach for input border */
+      border-color: hsl(var(--input-border));
+  }
+}
+
+/* Add styles for Geist fonts if not already present */
+@layer base {
+  :root {
+    --font-geist-sans: 'Geist', Arial, sans-serif;
+    --font-geist-mono: 'Geist Mono', monospace;
+  }
+}
+
+/* Apply custom colors using Tailwind utility classes */
+>>>>>>> 573bb45a (Initial project push)
+@layer utilities {
+  .text-prospect {
+    color: hsl(var(--prospect));
+  }
+  .text-prospect-foreground {
+    color: hsl(var(--prospect-foreground));
+  }
+  .bg-prospect {
+    background-color: hsl(var(--prospect));
+  }
+  .bg-prospect-foreground {
+     background-color: hsl(var(--prospect-foreground));
+  }
+
+  .text-booked {
+    color: hsl(var(--booked));
+  }
+  .text-booked-foreground {
+    color: hsl(var(--booked-foreground));
+  }
+  .bg-booked {
+    background-color: hsl(var(--booked));
+  }
+   .bg-booked-foreground {
+     background-color: hsl(var(--booked-foreground));
+  }
+}
