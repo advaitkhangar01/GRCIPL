@@ -1,32 +1,22 @@
 
-import './globals.css'; // Re-enable global styles
 import type { Metadata } from 'next';
-import { Toaster } from "@/components/ui/toaster"; // Re-enable Toaster
-
-export const metadata: Metadata = {
-  title: 'GRCIPL CRM Lead Management Software',
-  description: 'Lead Management and Sales Tracking App for Gaea Realty and Consultants India pvt. ltd.',
-
-import type {Metadata} from 'next';
-import { Geist, Geist_Mono } from 'next/font/google'; // Use specific font objects
+import { Inter } from 'next/font/google';
 import './globals.css';
-import { Toaster } from "@/components/ui/toaster"; // Import Toaster
+import { AuthProvider } from '@/contexts/AuthContext';
+import { DataProvider } from '@/contexts/DataContext';
+import { Toaster } from "@/components/ui/toaster";
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  // subsets: ['latin'], // Remove subsets if using the full font
-});
-
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  // subsets: ['latin'], // Remove subsets if using the full font
-});
-
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 
 export const metadata: Metadata = {
-  title: 'Gaea Realty and Consultants India pvt. ltd. - Lead Management',
-  description: 'Lead Management and Sales Tracking App',
-
+  title: 'GRCIPL CRM Lead Management',
+  description: 'Lead management software for Gaea Realty and Consultants India Pvt. Ltd.',
+  icons: {
+    icon: '/favicon.ico', // Assumes favicon.ico is in the public directory
+    // You can also provide other icon types:
+    // apple: '/apple-icon.png',
+    // shortcut: '/shortcut-icon.png',
+  },
 };
 
 export default function RootLayout({
@@ -35,17 +25,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-
-      {/* Using Tailwind's default font-sans which will use system UI fonts */}
-      <body className="font-sans antialiased">
-        {children}
-        <Toaster />
-
-      <body className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}>
-        {children}
-        <Toaster /> {/* Add Toaster here */}
-
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${inter.variable} font-sans antialiased`}>
+        <AuthProvider>
+          <DataProvider>
+            {children}
+            <Toaster />
+          </DataProvider>
+        </AuthProvider>
       </body>
     </html>
   );
